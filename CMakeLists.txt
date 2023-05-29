@@ -19,6 +19,11 @@ set(PROJECT_SOURCES
         dialog.cpp
         dialog.h
         dialog.ui
+        logindialog.cpp
+        logindialog.h
+        logindialog.ui
+        guiprogram.h
+        guiprogram.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
