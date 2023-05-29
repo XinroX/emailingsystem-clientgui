@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
@@ -24,7 +24,10 @@ set(PROJECT_SOURCES
         logindialog.ui
         guiprogram.h
         guiprogram.cpp
-)
+        Button.cpp Button.h newmessagedialog.cpp newmessagedialog.h newmessagedialog.ui)
+
+add_subdirectory(../emailingsystem-client client)
+add_subdirectory(../emailingsystem-core core)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(emailingsystem-clientgui
@@ -49,7 +52,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(emailingsystem-clientgui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(emailingsystem-clientgui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets emailingsystem-client core)
 
 set_target_properties(emailingsystem-clientgui PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

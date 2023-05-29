@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include "../emailingsystem-core/message.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Dialog; }
@@ -14,8 +15,13 @@ class Dialog : public QDialog
 public:
     Dialog(QWidget *parent = nullptr);
     ~Dialog();
-    
+
+public slots:
+    void UpdateMessages(const QVector<core::Message>& messages);
+signals:
+    void RequestUpdate();
 private:
     Ui::Dialog *ui;
+    QVector<core::Message> messages;
 };
 #endif // DIALOG_H

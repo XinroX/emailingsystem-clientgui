@@ -14,7 +14,11 @@ class LoginDialog : public QDialog
 public:
     explicit LoginDialog(QWidget *parent = nullptr);
     ~LoginDialog();
-    
+public slots:
+    void LoginBtnClicked();
+    void LoginRejected();
+signals:
+    void Login(const QString& login, const QString& password);
 private:
     Ui::LoginDialog *ui;
     
